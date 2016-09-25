@@ -26,7 +26,7 @@ elixir(mix => {
     mix.copy('node_modules/systemjs', 'public/node_modules/systemjs');
     mix.copy('node_modules/zone.js', 'public/node_modules/zone.js');
  
-    mix.typescript('app.js','public/','/**/*.ts',{
+    mix.typescript('/**/*.ts','public/app',{
                   "target": "es5",
                   "module": "commonjs",
                   "moduleResolution": "node",
@@ -36,4 +36,6 @@ elixir(mix => {
                   "removeComments": false,
                   "noImplicitAny": false
     });
+    mix.copy('resources/assets/typescript/*.html', 'public/app/');
+    mix.copy('resources/assets/typescript/*.css', 'public/app/');
 });

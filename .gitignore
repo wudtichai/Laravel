@@ -7,3 +7,5 @@ Homestead.yaml
 .env
 /typings
 /public/node_modules
+/public/app
+/zone
