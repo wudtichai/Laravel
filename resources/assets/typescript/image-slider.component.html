@@ -1,0 +1,10 @@
+<div class="slideshow-container">
+  <div *ngFor="let image in images" class="mySlides fade" [hidden]="!image.show">
+    <img [src]="image.src" style="width:100%">
+  </div>
+</div>
+<br>
+
+<div style="text-align:center">
+  <span *ngFor="let image in images" class="dot" [class.active]="image.show" (click)="currentSlide(image)"></span>
+</div>
