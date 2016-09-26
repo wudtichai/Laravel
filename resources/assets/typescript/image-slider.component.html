@@ -1,0 +1,11 @@
+<div class="slideshow-container">
+  <div *ngFor="let image of images" class="mySlides" [hidden]="!image.show">
+    <img [src]="image.src" style="width:100%;max-height: 50%;">
+  </div>
+  <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+  <a class="next" (click)="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+<div style="text-align:center">
+  <span *ngFor="let image of images;let i = index" class="dot" [class.active]="image.show" (click)="showSlide(i)"></span>
+</div>
