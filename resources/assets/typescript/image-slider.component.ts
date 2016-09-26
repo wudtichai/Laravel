@@ -33,7 +33,6 @@ export class ImageSliderComponent {
 
   plusSlides(n){
     let current = this.mod((this.current + n),this.count);
-    console.log(current);
     this.showSlide(current); 
   }
 
