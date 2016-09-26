@@ -1,6 +1,7 @@
 h1 {
-	background: rgb(181, 92, 128);
-	color: rgb(99, 102, 106);
-	padding: 20px 80px;
-	margin: 0;
+    background: rgb(181, 92, 128);
+    color: rgb(99, 102, 106);
+    padding: 20px 80px;
+    margin: 0;
+    font-size: 2em;
 }

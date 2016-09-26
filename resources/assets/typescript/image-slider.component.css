@@ -1,6 +1,6 @@
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+  /*max-width: 1000px;*/
   position: relative;
   margin: auto;
 }
@@ -61,6 +61,8 @@
   border-radius: 50%;
   display: inline-block;
   transition: background-color 0.6s ease;
+  position: relative;
+  top: -40px;
 }
 
 .active, .dot:hover {
