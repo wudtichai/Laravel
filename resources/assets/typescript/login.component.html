@@ -5,7 +5,7 @@
     <div class="form-group">
       <label class="sr-only" for="studentId">รหัสนิสิต</label>
       <input type="text" class="form-control" id="studentId" name="studentId" [(ngModel)]="loginModel.studentId" placeholder="รหัสนิสิต">
-      <button type="button" class="btn btn-primary" [disabled]="!loginForm.form.valid">เข้าสู่ระบบ</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">เข้าสู่ระบบ</button>
     </div>
   </form>
   <p>*หากไม่สามารถเข้าสู่ระบบได้

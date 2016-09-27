@@ -20,13 +20,13 @@ class AuthController extends Controller
             ]; 
             return response()->json(['data'=> $data]);
         }
-        return response()->json(['data'=>['message'=>'Access denied']], 401);
+        return response()->json(['message'=>'Access denied'], 401);
     }
 
     public function logout()
     {
         Auth::logout();
-        return response()->json(['data'=>['message'=>'logout']]);
+        return response()->json(['message'=>'logout']);
     }
 
     public function status()
@@ -35,7 +35,7 @@ class AuthController extends Controller
             $data = ['user' => Auth::user()];
             return response()->json(['data'=> $data]);
         }
-        return response()->json(['data'=>['message'=>'Unauthorized']], 401);
+        return response()->json(['message'=>'Unauthorized'], 401);
     }
 
 }
