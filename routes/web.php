@@ -18,4 +18,5 @@ Route::get('/', function () {
 Route::group(['prefix' => 'auth'], function () {
 	Route::post('login', 'Auth\AuthController@login');
 	Route::get('logout', 'Auth\AuthController@logout');
+	Route::get('status', 'Auth\AuthController@status');
 });

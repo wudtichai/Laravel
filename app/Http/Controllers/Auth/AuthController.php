@@ -29,4 +29,13 @@ class AuthController extends Controller
         return response()->json(['data'=>['message'=>'logout']]);
     }
 
+    public function status()
+    {
+        if (Auth::check()) {
+            $data = ['user' => Auth::user()];
+            return response()->json(['data'=> $data]);
+        }
+        return response()->json(['data'=>['message'=>'Unauthorized']], 401);
+    }
+
 }
