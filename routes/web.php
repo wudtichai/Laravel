@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('angular2');
 });
+
+Route::group(['prefix' => 'auth'], function () {
+	Route::post('login', 'AuthController@login');
+	Route::get('logout', 'AuthController@logout');
+});
