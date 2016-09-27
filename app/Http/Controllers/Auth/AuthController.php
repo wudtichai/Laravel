@@ -4,18 +4,21 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        Auth::logout();
         $studentId = $request->input('studentId');
-        if (Auth::loginUsingId($studentId)->check()) {
+        Auth::loginUsingId($studentId);
+        if (Auth::check()) {
             $data = [
                 'message' => 'Login success',
                 'user' => Auth::user()
             ]; 
-            response()->json(['data'=> $data]);
+            return response()->json(['data'=> $data]);
         }
         return response()->json(['data'=>['message'=>'Access denied']], 401);
     }
