@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { StageService } from './stage.service'
+import { StageService } from '../stage.service'
 
 @Component({
   selector: 'learn',
-  templateUrl: 'app/learn.component.html',
+  templateUrl: 'app/learn/learn.component.html',
   providers: [StageService]
 })
 export class LearnComponent { 

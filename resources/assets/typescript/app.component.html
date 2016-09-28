@@ -5,5 +5,4 @@
         <button type="button" class="btn btn-link" (click)="logout()">Log out</button>
     </form>
 </header>
-<login *ngIf="!loginStatus" (onLogin)="onLogin($event)"></login>
-<learn *ngIf="loginStatus"></learn>
+<router-outlet></router-outlet>

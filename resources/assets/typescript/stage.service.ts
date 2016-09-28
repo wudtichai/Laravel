@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ProgressService {
+export class StageService {
   private getStageUrl = 'learn/stage';
 
   constructor(private http: Http) { }

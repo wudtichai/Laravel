@@ -9,39 +9,29 @@ import { User } from './user';
   providers: [AuthService]
 })
 export class AppComponent { 
-  loginStatus = false;
+
+  isLoggedIn = false;
   user :User;
+
   constructor(private authService: AuthService) { }
-  
+
   ngOnInit() {
-    this.check();
+    this.checkAuth();
   }
 
-  check() {
-    this.authService.check().subscribe(
-      (res) => this.setUser(res.data.user),
-      (err) => this.clearUser()
-    );
+  fetch() {
+    this.isLoggedIn = this.authService.isLoggedIn;
+    this.user = this.authService.user;
+  }
+
+  checkAuth() {
+    this.authService.check();
+    this.fetch();
   }
 
   logout() {
-    this.authService.logout().subscribe(
-      (res) => this.clearUser()
-    );
-  }
-
-  setUser(user){
-    this.user = user;
-    this.loginStatus = true;
-  }
-
-  clearUser(){
-    delete this.user;
-    this.loginStatus = false;
-  }
-
-  onLogin(res) {
-    this.setUser(res.data.user);
+    this.authService.logout();
+    this.fetch();
   }
 
 }

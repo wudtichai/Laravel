@@ -36,6 +36,6 @@ elixir(mix => {
                   "removeComments": false,
                   "noImplicitAny": false
     });
-    mix.copy('resources/assets/typescript/*.html', 'public/app/');
-    mix.copy('resources/assets/typescript/*.css', 'public/app/');
+    mix.copy('resources/assets/typescript/**/*.html', 'public/app/');
+    mix.copy('resources/assets/typescript/**/*.css', 'public/app/');
 });

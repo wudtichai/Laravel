@@ -7,11 +7,15 @@ import { AppComponent }   from './app.component';
 import { ImageSliderComponent } from './image-slider.component';
 import { LoginComponent } from './login.component';
 
+import { routing,
+         appRoutingProviders }  from './app.routing';
+
 @NgModule({
   imports: [ 
     BrowserModule, 
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
 
   declarations: [ 
@@ -20,6 +24,10 @@ import { LoginComponent } from './login.component';
     AppComponent 
   ],
 
+  providers: [
+    appRoutingProviders
+  ],
+  
   bootstrap:[ AppComponent ]
 })
 export class AppModule { }
