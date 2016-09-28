@@ -4,7 +4,6 @@ import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
 import { AppComponent }   from './app.component';
-import { HeaderAppComponent } from './header-app.component';
 import { ImageSliderComponent } from './image-slider.component';
 import { LoginComponent } from './login.component';
 
@@ -16,7 +15,6 @@ import { LoginComponent } from './login.component';
   ],
 
   declarations: [ 
-    HeaderAppComponent, 
     ImageSliderComponent, 
     LoginComponent, 
     AppComponent 

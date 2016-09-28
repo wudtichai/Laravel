@@ -1,0 +1,16 @@
+header {
+    background: rgb(181, 92, 128);
+    color: rgb(99, 102, 106);
+    padding: 20px 10% 10px;
+    overflow: hidden;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+    float: left;
+}
+
+form {
+    float: right;
+} 
