@@ -1,3 +1,8 @@
-<header-app></header-app>
-<image-slider></image-slider>
-<login></login>
+<header>
+    <h1>เว็บไซต์เก็บข้อมูลวิจัยการเรียนออนไลน์ประกอบการใช้ eBook แบบ Interactive และ Non-interactive</h1>
+    <form class="form-inline form-group-lg" *ngIf="loginStatus">
+        <label class="control-label">{{user.firstname}} {{user.lastname}}</label>
+        <button type="button" class="btn btn-link" (click)="logout()">Log out</button>
+    </form>
+</header>
+<login *ngIf="!loginStatus" (onLogin)="onLogin($event)"></login>
