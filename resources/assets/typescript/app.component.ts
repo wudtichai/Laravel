@@ -11,10 +11,12 @@ import { User } from './user';
 export class AppComponent { 
   loginStatus = false;
   user :User;
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService) { }
+  
+  ngOnInit() {
     this.check();
   }
- 
+
   check() {
     this.authService.check().subscribe(
       (res) => this.setUser(res.data.user),

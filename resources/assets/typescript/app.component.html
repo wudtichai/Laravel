@@ -6,3 +6,4 @@
     </form>
 </header>
 <login *ngIf="!loginStatus" (onLogin)="onLogin($event)"></login>
+<learn *ngIf="loginStatus"></learn>
