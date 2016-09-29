@@ -17,7 +17,14 @@ export class AppComponent {
   isLoggedIn: boolean = false;
   user :User;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    authService.userUpdated$.subscribe(
+      (user) => {
+        this.isLoggedIn = true;
+        this.user = user;
+      }
+    ); 
+  }
 
   ngOnInit() {
     this.checkAuth(); 
@@ -26,8 +33,6 @@ export class AppComponent {
   checkAuth() {
     this.authService.check().subscribe(() => {
       if (this.authService.isLoggedIn) {
-        this.user = this.authService.user;
-        this.isLoggedIn = true;
         this.router.navigate(['/learn']);
       }
     });
@@ -35,7 +40,7 @@ export class AppComponent {
 
   logout() {
     this.authService.logout().subscribe(() => {
-      if (this.authService.isLoggedIn) {
+      if (!this.authService.isLoggedIn) {
         delete this.user;
         this.isLoggedIn = false;
         this.router.navigate(['/login']);

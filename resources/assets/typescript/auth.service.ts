@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http,Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
+import { Subject }    from 'rxjs/Subject';
 import { User } from './user';
 import { Login } from './login';
 import { headers, headersPost } from './ajax-header';
@@ -17,6 +18,9 @@ export class AuthService {
   user :User;
   redirectUrl: string;
 
+  private userSource = new Subject<User>();
+  userUpdated$ = this.userSource.asObservable();
+
   constructor(private http: Http) { }
 
   login(login: Login) {
@@ -26,6 +30,13 @@ export class AuthService {
       .catch(this.handleError);
   }
 
+  check() {
+    return this.http
+      .get(this.getStatusUrl, {headers})
+      .map(this.setUser)
+      .catch(this.handleError);
+  }
+  
   logout() {
     return this.http
       .get(this.logoutUrl, {headers})
@@ -37,16 +48,14 @@ export class AuthService {
       .catch(this.handleError);
   }
 
-  check() {
-    return this.http
-      .get(this.getStatusUrl, {headers})
-      .map(this.setUser)
-      .catch(this.handleError);
+  updateUser(user: User) {
+    this.userSource.next(user);
   }
 
   setUser = (res:Response) => {
     let user = res.json().data.user || { };
     this.user = user;
+    this.updateUser(user);
     this.isLoggedIn = true;
   }
 
