@@ -6,8 +6,7 @@ import { AuthService } from './auth.service'
 @Component({
   selector: 'login',
   templateUrl: 'app/login.component.html',
-  styleUrls: ['app/login.component.css'],
-  providers: [AuthService]
+  styleUrls: ['app/login.component.css']
 })
 export class LoginComponent {
   submitted = false;
@@ -15,25 +14,22 @@ export class LoginComponent {
   active = true;
   invalid = false;
 
-  constructor(public authService: AuthService, public router: Router) {}
+  constructor(private authService: AuthService, public router: Router) {}
 
   onSubmit() { 
     this.submitted = true;
     this.invalid = false;
 
-    this.authService.login(this.loginModel);
-    if (this.authService.isLoggedIn) {
-      this.loginModel = new Login();
-      this.submitted = false;
-      // Get the redirect URL from our auth service
-      // If no redirect has been set, use the default
-      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/learn';
-      // Redirect the user
-      this.router.navigate([redirect]);
-    } else {
-      this.invalid = true;
-    }
-    setTimeout(() => this.active = true, 0);
+    this.authService.login(this.loginModel).subscribe(() => {
+      if (this.authService.isLoggedIn) {
+        this.loginModel = new Login();
+        this.submitted = false;
+        this.router.navigate(['/learn']);
+      } else {
+        this.invalid = true;
+      }
+      setTimeout(() => this.active = true, 0);      
+    });
   }
 
 }

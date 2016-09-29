@@ -1,15 +1,16 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login.component';
-import { AppComponent } from './app.component';
-import { loginRoutes,
-         authProviders }  from './login.routing';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 const appRoutes: Routes = [
-  ...loginRoutes
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 export const appRoutingProviders: any[] = [
-  authProviders
+  AuthGuard,
+  AuthService
 ];
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

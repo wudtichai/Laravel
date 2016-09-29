@@ -15,8 +15,9 @@ export class LearnComponent {
   }
 
   getStage() { 
-    this.stageService.stage()
-        .subscribe(res => this.stage = res.data.stage);
+    return 0;
+    // this.stageService.stage()
+    //     .subscribe(res => this.stage = res.data.stage);
   }
 
 }

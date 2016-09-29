@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http,Response } from '@angular/http';
+import { Observable }     from 'rxjs/Observable';
 import { User } from './user';
 import { Login } from './login';
 import { headers, headersPost } from './ajax-header';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
@@ -11,43 +14,47 @@ export class AuthService {
   private logoutUrl = 'auth/logout';
   private getStatusUrl = 'auth/status';
   isLoggedIn: boolean = false;
-  redirectUrl: string;
   user :User;
+  redirectUrl: string;
 
   constructor(private http: Http) { }
 
   login(login: Login) {
-    this.http
+    return this.http
       .post(this.loginUrl, JSON.stringify(login), {headers:headersPost})
-      .map(res => res.json())
-      .subscribe(res => this.setUser(res.data.user));
+      .map(this.setUser)
+      .catch(this.handleError);
   }
 
   logout() {
-    this.http
+    return this.http
       .get(this.logoutUrl, {headers})
-      .map(res => res.json())
-      .subscribe((res) => this.clearUser());
+      .map(
+        (res) => {
+          delete this.user;
+          this.isLoggedIn = false;
+        })
+      .catch(this.handleError);
   }
 
   check() {
-    this.http
+    return this.http
       .get(this.getStatusUrl, {headers})
-      .map(res => res.json())
-      .subscribe(
-        (res) => this.setUser(res.data.user),
-        (err) => this.clearUser()
-      );
+      .map(this.setUser)
+      .catch(this.handleError);
   }
 
-  setUser(user){
+  setUser = (res:Response) => {
+    let user = res.json().data.user || { };
     this.user = user;
     this.isLoggedIn = true;
   }
 
-  clearUser(){
-    delete this.user;
-    this.isLoggedIn = false;
+  handleError(error: any){
+    let errMsg = (error.message) ? error.message :
+        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg); // log to console instead
+    return Observable.throw(errMsg);
   }
 
 }

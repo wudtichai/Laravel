@@ -2,6 +2,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import { LearnModule }   from './learn/learn.module';
 
 import { AppComponent }   from './app.component';
 import { ImageSliderComponent } from './image-slider.component';
@@ -15,13 +16,14 @@ import { routing,
     BrowserModule, 
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    LearnModule
   ],
 
   declarations: [ 
-    ImageSliderComponent, 
-    LoginComponent, 
-    AppComponent 
+    AppComponent,
+    LoginComponent,
+    ImageSliderComponent
   ],
 
   providers: [

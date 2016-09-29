@@ -7,15 +7,7 @@ const learnRoutes: Routes = [
   {
     path: 'learn',
     component: LearnComponent,
-    canActivate: [AuthGuard],
-    children: [
-      {
-        path: '',
-        canActivateChild: [AuthGuard],
-        children: [
-        ],
-      }
-    ]
+    canActivate: [AuthGuard]
   }
 ];
 
