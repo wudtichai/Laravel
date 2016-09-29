@@ -2,7 +2,7 @@
 <section>
   <p>สวัสดีครับ ยินดีต้อนรับเข้าสู่เว็บไซต์การเก็บข้อมูลวิจัยการเรียนออนไลน์ประกอบการใช้ eBook
   กรุณากรอกรหัสนิสิตจำนวน 10 หลักเพื่อเข้าสู่ระบบ</p>
-  <form class="form-inline" *ngIf="active" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <form class="form-inline" (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div class="form-group" [class.has-error]=invalid>
       <label class="sr-only" for="studentId">รหัสนิสิต</label>
       <input type="text" class="form-control" id="studentId" name="studentId" [(ngModel)]="loginModel.studentId" placeholder="รหัสนิสิต"  aria-describedby="helpStudentId">

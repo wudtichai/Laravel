@@ -26,15 +26,13 @@ export class AuthService {
   login(login: Login) {
     return this.http
       .post(this.loginUrl, JSON.stringify(login), {headers:headersPost})
-      .map(this.setUser)
-      .catch(this.handleError);
+      .map(this.setUser);
   }
 
   check() {
     return this.http
       .get(this.getStatusUrl, {headers})
-      .map(this.setUser)
-      .catch(this.handleError);
+      .map(this.setUser);
   }
   
   logout() {
@@ -44,8 +42,7 @@ export class AuthService {
         (res) => {
           delete this.user;
           this.isLoggedIn = false;
-        })
-      .catch(this.handleError);
+        });
   }
 
   updateUser(user: User) {
@@ -57,13 +54,6 @@ export class AuthService {
     this.user = user;
     this.updateUser(user);
     this.isLoggedIn = true;
-  }
-
-  handleError(error: any){
-    let errMsg = (error.message) ? error.message :
-        error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    console.error(errMsg); // log to console instead
-    return Observable.throw(errMsg);
   }
 
 }

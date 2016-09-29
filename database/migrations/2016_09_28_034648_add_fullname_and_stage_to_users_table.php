@@ -14,8 +14,8 @@ class AddFullnameAndStageToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('firstname_th')->nullable();
-            $table->string('lastname_th')->nullable();
+            $table->string('fullname_th')->nullable();
+            $table->string('email')->nullable();
             $table->integer('stage');
         });
     }
@@ -28,7 +28,7 @@ class AddFullnameAndStageToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['firstname_th', 'lastname_th', 'stage']);
+            $table->dropColumn(['fullname_th', 'email', 'stage']);
         });
     }
 }

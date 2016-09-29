@@ -1,0 +1,12 @@
+section{
+	padding-top: 20px;
+}
+
+article {
+	margin: 20px 0;
+}
+
+form {
+	max-width: 580px;
+	margin: 20px auto;
+}

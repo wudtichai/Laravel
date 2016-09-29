@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
-import { StageService } from '../stage.service'
+import { StageService } from './stage.service';
 
 @Component({
-  selector: 'learn',
   templateUrl: 'app/learn/learn.component.html',
-  providers: [StageService]
+  styleUrls: ['app/learn/learn.component.css']
 })
 export class LearnComponent { 
   stage :number;
+  bar: number;
   constructor(private stageService: StageService) { }
 
   ngOnInit() {
     this.getStage();
   }
 
-  getStage() { 
-    return 0;
-    // this.stageService.stage()
-    //     .subscribe(res => this.stage = res.data.stage);
+  getStage() {
+    this.stageService.stage()
+        .subscribe(
+          (res) => {
+            this.stage = res.data.stage;
+            this.calculateBar();
+          });
+
+  }
+
+  calculateBar(){
+    this.bar = Math.round(this.stage/7*100);
   }
 
 }

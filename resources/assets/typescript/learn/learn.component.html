@@ -1,1 +1,8 @@
-<h3>Learn</h3>
+<aside *ngIf="stage>0">
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="bar" aria-valuemin="0" aria-valuemax="100" [style.width] = "bar + '%'">
+      <span class="sr-only">{{bar}}% Complete</span>
+    </div>
+  </div>
+</aside>
+<router-outlet></router-outlet>

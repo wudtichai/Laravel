@@ -16,8 +16,8 @@ require('laravel-elixir-vue');
  */
 
 elixir(mix => {
-    // mix.sass('app.scss')
-    //    .webpack('app.js');
+    mix.sass('app.scss')
+       .webpack('app.js');
 
     // mix.copy('node_modules/@angular', 'public/node_modules/@angular');
     // mix.copy('node_modules/core-js', 'public/node_modules/core-js');

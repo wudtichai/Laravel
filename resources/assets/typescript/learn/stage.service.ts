@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { headers } from './ajax-header';
+import { headers } from '../ajax-header';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
