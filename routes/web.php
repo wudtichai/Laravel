@@ -23,4 +23,5 @@ Route::group(['prefix' => 'auth'], function () {
 
 Route::group(['prefix' => 'learn', 'middleware' => ['auth.check']], function () {
     Route::get('stage', 'Learn\StageController@stage');
+    Route::post('confirm', 'Learn\ConfirmController@confirm');
 });

@@ -1,0 +1,23 @@
+th, td{
+  width: 13%;
+  text-align: center;
+}
+.first {
+  width: 22%;
+  text-align: left;
+}
+thead tr th {
+  vertical-align: middle;
+}
+section {
+  max-width: 680px;
+  margin: 0px auto;
+  padding: 20px 20px 0;
+}
+h3 {
+  font-size: 1.2em;
+}
+.up {
+  display: inline;
+  color: red;
+}

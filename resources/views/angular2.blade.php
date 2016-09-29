@@ -32,6 +32,6 @@
   </head>
   <!-- 3. Display the application -->
   <body>
-    <my-app>Loading...</my-app>
+    <my-app><img src="images/loading.gif" style="display:block;margin:80px auto;"></my-app>
   </body>
 </html>

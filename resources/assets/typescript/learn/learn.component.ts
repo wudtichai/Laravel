@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { StageService } from './stage.service';
+import { Router }      from '@angular/router';
 
 @Component({
   templateUrl: 'app/learn/learn.component.html',
@@ -11,21 +12,12 @@ export class LearnComponent {
   constructor(private stageService: StageService) { }
 
   ngOnInit() {
-    this.getStage();
-  }
-
-  getStage() {
-    this.stageService.stage()
-        .subscribe(
-          (res) => {
-            this.stage = res.data.stage;
-            this.calculateBar();
-          });
-
-  }
-
-  calculateBar(){
-    this.bar = Math.round(this.stage/7*100);
+    this.stageService.stageUpdated$.subscribe(
+      (stage) => {
+        this.stage = stage;
+        this.bar = Math.round(this.stage/7*100);
+      }
+    ); 
   }
 
 }

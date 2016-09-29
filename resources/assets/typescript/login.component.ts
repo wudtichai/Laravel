@@ -8,20 +8,17 @@ import { AuthService } from './auth.service'
   styleUrls: ['app/login.component.css']
 })
 export class LoginComponent {
-  submitted = false;
   loginModel = new Login();
   invalid = false;
 
   constructor(private authService: AuthService, public router: Router) {}
 
   onSubmit() { 
-    this.submitted = true;
     this.invalid = false;
 
     this.authService.login(this.loginModel).subscribe(() => {
       if (this.authService.isLoggedIn) {
         this.loginModel = new Login();
-        this.submitted = false;
         this.router.navigate(['/learn']);
       } else {
         this.invalid = true;

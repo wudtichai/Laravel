@@ -1,4 +1,4 @@
 export class Confirm {
-  fullname: string;
+  fullname_th: string;
   email: string;
 }

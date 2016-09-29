@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service'
 import { User } from './user';
-import {
-  CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-}                         from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-app',
@@ -24,18 +20,6 @@ export class AppComponent {
         this.user = user;
       }
     ); 
-  }
-
-  ngOnInit() {
-    this.checkAuth(); 
-  }
-
-  checkAuth() {
-    this.authService.check().subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        this.router.navigate(['/learn']);
-      }
-    });
   }
 
   logout() {

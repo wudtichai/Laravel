@@ -1,19 +1,22 @@
 import { Component } from '@angular/core';
 import { Confirm }    from './confirm';
+import { ConfirmService }    from './confirm.service';
+import { Router }      from '@angular/router';
 
 declare var $:any;
 declare var jQuery:any;
 
 @Component({
   templateUrl: 'app/learn/confirm.component.html',
-  styleUrls: ['app/learn/confirm.component.css']
+  styleUrls: ['app/learn/confirm.component.css'],
+  providers: [ConfirmService]
 })
+
 export class ConfirmComponent { 
 
-  submitted = false;
   confirmModel = new Confirm();
 
-  constructor(){
+  constructor(private confirmService: ConfirmService, public router: Router) {
     jQuery.validator.setDefaults({
       highlight: function(element) {
           $(element).closest('.form-group').addClass('has-error');
@@ -46,12 +49,14 @@ export class ConfirmComponent {
     });
   }
 
-  onSubmit() { 
-    this.submitted = true;
+  onSubmit() {
     if($("#confirm-form").valid()){
-      alert('ok');
-    } else {
-      alert('fail');
+      this.confirmService.confirm(this.confirmModel).subscribe(
+        () => {
+          this.confirmModel = new Confirm();
+          this.router.navigate(['/learn']);
+        }
+      );
     }
   }
 
