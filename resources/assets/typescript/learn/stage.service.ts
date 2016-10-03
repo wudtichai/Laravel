@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class StageService {
-  private getStageUrl = 'learn/stage';
+  private getStageUrl = 'api/learn/stage';
   stage: number;
 
   private stageSource = new Subject<number>();

@@ -6,7 +6,7 @@ import { KnowledgeModel }    from './knowledge-model';
 
 @Injectable()
 export class KnowledgeService {
-  private knowledgeUrl = 'learn/knowledge';
+  private knowledgeUrl = 'api/learn/knowledge';
 
   constructor(private http: Http) { }
 

@@ -6,7 +6,7 @@ import { Confirm }    from './confirm';
 
 @Injectable()
 export class ConfirmService {
-  private confirmUrl = 'learn/confirm';
+  private confirmUrl = 'api/learn/confirm';
 
   constructor(private http: Http) { }
 

@@ -17,11 +17,11 @@
       <tr *ngFor="let knowledge of knowledgeList">
         <td class="first">{{knowledge.title}}</td>
         <td *ngFor="let n of [1,2,3,4,5,6]">
-          <input type="radio" name={{knowledge.name}} value="{{n}}">
+          <input type="radio" name={{knowledge.name}} value="{{n}}" required>
         </td>
       </tr>
     </tbody>
   </table>
-  <button type="submit" class="btn btn-primary" [disabled]="!knowledgeForm.form.valid">ส่งแบบสอบถาม</button>
+  <button type="button" class="btn btn-primary" [disabled]="!knowledgeForm.form.valid" (click)="onSubmit()">ส่งแบบสอบถาม</button>
   </form>
 </section>

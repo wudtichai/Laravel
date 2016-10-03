@@ -34,19 +34,6 @@ export class ConfirmComponent {
           }
       }
     });
-    $("#confirm-form").validate({
-      submitHandler: function(form) {
-      },
-      rules: {
-        fullname: {
-          required: true
-        },
-        email: {
-          required: true,
-          email: true
-        },        
-      }
-    });
   }
 
   onSubmit() {
@@ -59,5 +46,4 @@ export class ConfirmComponent {
       );
     }
   }
-
 }

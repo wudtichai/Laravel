@@ -11,9 +11,9 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class AuthService {
-  private loginUrl = 'auth/login';
-  private logoutUrl = 'auth/logout';
-  private getStatusUrl = 'auth/status';
+  private loginUrl = 'api/auth/login';
+  private logoutUrl = 'api/auth/logout';
+  private getStatusUrl = 'api/auth/status';
   isLoggedIn: boolean = false;
   user :User;
   redirectUrl: string;
