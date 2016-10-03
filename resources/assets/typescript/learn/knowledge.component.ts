@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { KnowledgeModel }    from './knowledge-model';
+
+declare var $:any;
+declare var jQuery:any;
 
 @Component({
   templateUrl: 'app/learn/knowledge.component.html',
@@ -8,7 +12,7 @@ import { Component } from '@angular/core';
 export class KnowledgeComponent { 
 
   knowledgeList = [
-    {title: "3D printing", name: "3d_printing"},
+    {title: "3D printing", name: "three_d_printing"},
     {title: "Advanced search", name: "advanced_search"},
     {title: "banner ad", name: "banner_ad"},
     {title: "Bcc (on e-mail)", name: "bcc_on_email"},
@@ -33,4 +37,67 @@ export class KnowledgeComponent {
     {title: "torrent", name: "torrent"},
     {title: "wiki", name: "wiki"}
   ];
+
+  constructor() {
+    let required_rules = {};
+    for(let knowledge of this.knowledgeList) {
+      required_rules[knowledge.name] = {required : true};
+    }
+    
+    jQuery.validator.setDefaults({
+      highlight: function(element) {
+          $(element).closest('.form-group').addClass('has-error');
+      },
+      unhighlight: function(element) {
+          $(element).closest('.form-group').removeClass('has-error');
+      },
+      errorElement: 'span',
+      errorClass: 'help-block',
+      errorPlacement: function(error, element) {
+          if(element.parent('.input-group').length) {
+              error.insertAfter(element.parent());
+          } else {
+              error.insertAfter(element);
+          }
+      }
+    });
+    $("#knowledge-form").validate({
+      submitHandler: function(form) {
+      },
+      rules: required_rules
+    });
+    console.log({
+      submitHandler: function(form) {
+      },
+      rules: required_rules
+    });
+    $("#knowledge-form").submit(function(event){
+      event.preventDefault();
+    });
+  }
+
+  onSubmit() {
+    if($("#knowledge-form").valid()){
+      console.log(this.prepareKnowledge());
+      // this.resetForm();
+      // this.confirmService.confirm(this.knowledgeModel).subscribe(
+      //   () => {
+      //     this.confirmModel = new Confirm();
+      //     this.router.navigate(['/learn']);
+      //   }
+      // );
+    }
+  }
+
+  resetForm() {
+    $('input[type=radio]').removeAttr('checked');
+  }
+
+  prepareKnowledge() {
+    let knowledgeModel = new KnowledgeModel();
+    for(let knowledge of this.knowledgeList) {
+      knowledgeModel[knowledge.name] = $(`input[name={{knowledge.name}}]`).value;
+    }
+    return knowledgeModel;
+  }
 }

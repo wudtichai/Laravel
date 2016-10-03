@@ -12,7 +12,7 @@ thead tr th {
 section {
   max-width: 680px;
   margin: 0px auto;
-  padding: 20px 20px 0;
+  padding: 20px;
 }
 h3 {
   font-size: 1.2em;
@@ -20,4 +20,7 @@ h3 {
 .up {
   display: inline;
   color: red;
+}
+form {
+  text-align: center;
 }

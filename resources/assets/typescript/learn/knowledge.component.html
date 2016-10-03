@@ -1,5 +1,6 @@
 <section>
   <h3>ท่านคิดว่าท่านมีความรู้เกี่ยวกับสิ่งที่อยู่ในโลกดิจิทัลต่อไปนี้มากน้อยเพียงใด <h3 class="up">*</h3></h3>
+  <form class="form-inline" (ngSubmit)="onSubmit()" #knowledgeForm="ngForm" id="knowledge-form">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -21,4 +22,6 @@
       </tr>
     </tbody>
   </table>
+  <button type="submit" class="btn btn-primary" [disabled]="!knowledgeForm.form.valid">ส่งแบบสอบถาม</button>
+  </form>
 </section>
