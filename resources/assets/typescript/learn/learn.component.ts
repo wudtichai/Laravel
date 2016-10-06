@@ -15,7 +15,7 @@ export class LearnComponent {
     this.stageService.stageUpdated$.subscribe(
       (stage) => {
         this.stage = stage;
-        this.bar = Math.round(this.stage/7*100);
+        this.bar = Math.round(this.stage/7*100 - 100/14);
       }
     ); 
   }

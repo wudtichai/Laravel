@@ -1,8 +1,20 @@
 <aside *ngIf="stage>0">
-  <div class="progress">
-    <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="bar" aria-valuemin="0" aria-valuemax="100" [style.width] = "bar + '%'">
-      <span class="sr-only">{{bar}}% Complete</span>
+  <div class="group">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" [attr.aria-valuenow]="bar" aria-valuemin="0" aria-valuemax="100" [style.width] = "bar + '%'">
+        <span class="sr-only">{{bar}}% Complete</span>
+      </div>  
     </div>
+    <label class="progress-label">Progress</label>
   </div>
+  <li class="detail-list">
+    <ul class="detail">ความรู้เกี่ยวกับโลกดิจิทัล</ul>
+    <ul class="detail">ลักษณะการเรียนรู้</ul>
+    <ul class="detail">มูลค่าปัจจุบันและมูลค่าอนาคตของเงินตามเวลา</ul>
+    <ul class="detail">มูลค่าปัจจุบันของกระแสเงินสดประเภทเงินงวด</ul>
+    <ul class="detail">การใช้คอมพิวเตอร์ในการคำนวณ</ul>
+    <ul class="detail">แบบทดสอบหลังเรียน</ul>
+    <ul class="detail">ความพึงพอใจ</ul>
+  </li>
 </aside>
 <router-outlet></router-outlet>
