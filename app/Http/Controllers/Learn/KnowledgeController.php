@@ -12,10 +12,14 @@ class KnowledgeController extends Controller
     public function post(Request $request)
     {
         $user = Auth::user();
-        $knowledge = $user->knowledge()->create($request->all());
-        $user->stage = 2;
-        $user->save();
-        return response()->json(['data'=> ['knowledge' => $knowledge]],201);
+        if ($user->stage == 1) {
+            $knowledge = $user->knowledge()->create($request->all());
+            $user->stage = 2;
+            $user->save();
+            return response()->json(['data'=> ['knowledge' => $knowledge]], 201);
+        } else {
+            return response()->json(['message'=> 'Forbidden'], 403);
+        }
     }
 
 }

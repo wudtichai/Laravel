@@ -1,0 +1,12 @@
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 0;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+}

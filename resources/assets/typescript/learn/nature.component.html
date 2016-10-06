@@ -1,0 +1,13 @@
+<section>
+  <h3>ลักษณะการเรียนรู้</h3>
+  <p><span class="tab"></span>เลือกคำตอบที่อธิบายทางเลือกที่ดีที่สุดของคุณ โดยทำวงกลมรอบตัวอักษรหน้าคำตอบนั้น วงกลมได้มากกว่าหนึ่งคำตอบ ถ้าหากว่าคำตอบเดียวไม่เพียงพอตรงกับความรู้สึกของคุณ เว้นว่างไว้ในข้อที่มิได้เกี่ยวข้องกับคุณ</p>
+  <form (ngSubmit)="onSubmit()" #natureForm="ngForm">
+  <div class="form-group" *ngFor="let question of questionList; let i = index;">
+    <label>{{question.q}}</label>
+    <div class="checkbox" *ngFor="let answer_text of question.a;let j = index;">
+      <label><input type="checkbox" name="q{{i+1}}_{{j+1}}" value="1" [(ngModel)]="answer['q'+(i+1)+'_'+(j+1)].selected">{{answer_text}}</label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!natureForm.form.valid">ส่งแบบสอบถาม</button>
+  </form>
+</section>

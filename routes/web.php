@@ -26,5 +26,6 @@ Route::group(['prefix' => 'api'], function () {
         Route::get('stage', 'Learn\StageController@stage');
         Route::post('confirm', 'Learn\ConfirmController@confirm');
         Route::post('knowledge', 'Learn\KnowledgeController@post');
+        Route::post('nature', 'Learn\NatureController@post');
     });
 });
