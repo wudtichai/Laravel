@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router }      from '@angular/router';
+import { ActivatedRoute,Params }      from '@angular/router';
 
 @Component({
   template: 'Lesson{{id}}' 
@@ -8,7 +8,7 @@ export class LessonComponent {
 
   private id:number;
 
-  constructor(public router: Router) { }
+  constructor(public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {

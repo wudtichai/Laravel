@@ -21,12 +21,13 @@ class NatureController extends Controller
                     $data[$key] = 0;
                 }
             }
-            return response()->json(['data'=> $data], 201);
+            $nature = $user->nature()->create($data);
+            $user->stage = 3;
+            $user->save();
+            return response()->json(['nature'=> $nature], 201);
         } else {
             return response()->json(['message'=> 'Forbidden'], 403);
         }
-
-
     }
 
 }
