@@ -13,8 +13,6 @@ declare var jQuery:any;
 
 export class KnowledgeComponent { 
 
-  knowledgeModel = new KnowledgeModel();
-
   knowledgeList = [
     {title: "3D printing", name: "three_d_printing"},
     {title: "Advanced search", name: "advanced_search"},
@@ -51,9 +49,7 @@ export class KnowledgeComponent {
 
   onSubmit() {
     if($("#knowledge-form").valid()){
-      console.log(this.prepareKnowledge());
-      this.resetForm();
-      this.knowledgeService.send(this.knowledgeModel).subscribe(
+      this.knowledgeService.send(this.prepareKnowledge()).subscribe(
         () => {
           this.resetForm();
           this.router.navigate(['/learn']);
