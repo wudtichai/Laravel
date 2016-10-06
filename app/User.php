@@ -18,4 +18,9 @@ class User extends Authenticatable
         'fullname_th', 'email',
     ];
 
+    public function knowledge()
+    {
+        return $this->hasOne('App\Knowledge');
+    }
+
 }

@@ -7,6 +7,7 @@ import { LearnComponent } from './learn.component';
 import { MainComponent } from './main.component';
 import { ConfirmComponent } from './confirm.component';
 import { KnowledgeComponent } from './knowledge.component';
+import { NatureComponent } from './nature.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { KnowledgeComponent } from './knowledge.component';
     LearnComponent,
     MainComponent,
     ConfirmComponent,
-    KnowledgeComponent
+    KnowledgeComponent,
+    NatureComponent
   ],
   providers: [
     StageService

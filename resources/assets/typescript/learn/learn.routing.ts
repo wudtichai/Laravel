@@ -5,6 +5,7 @@ import { LearnComponent } from './learn.component';
 import { MainComponent } from './main.component';
 import { ConfirmComponent } from './confirm.component';
 import { KnowledgeComponent } from './knowledge.component';
+import { NatureComponent } from './nature.component';
 
 const learnRoutes: Routes = [
   {
@@ -14,7 +15,8 @@ const learnRoutes: Routes = [
 	children: [
 	  { path: '', component: MainComponent },
       { path: 'confirm', component: ConfirmComponent },
-      { path: 'knowledge', component: KnowledgeComponent }
+      { path: 'knowledge', component: KnowledgeComponent },
+      { path: 'nature', component: NatureComponent }
     ]
   }
 ];
