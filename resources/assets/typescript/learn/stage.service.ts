@@ -24,4 +24,8 @@ export class StageService {
         });
   }
 
+  updateStage(stage) {
+    this.stageSource.next(stage);
+  }
+
 }

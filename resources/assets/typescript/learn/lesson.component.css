@@ -1,3 +1,29 @@
 section {
-	padding: 20px 0px 20px;
+    padding: 20px 0px 20px;
+    min-width: 1024px;
+    overflow-x: scroll;
+}
+
+.video {
+    width: 40%;
+    float: left;
+}
+
+.calculator {
+    width: 40%;
+    float: left;
+}
+
+.pdf {
+    width: 60%;
+    float: right;
+}
+
+.previous {
+    float: left;
+    margin-left: 10%;
+}
+.next {
+    float: right;
+    margin-right: 10%;
 }

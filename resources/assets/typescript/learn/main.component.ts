@@ -19,8 +19,12 @@ export class MainComponent {
               this.router.navigate(['/learn/knowledge']);
             } else if(this.stageService.stage == 2) {
               this.router.navigate(['/learn/nature']);
-            } else if(this.stageService.stage >= 3 && this.stageService.stage <= 5) {
-              this.router.navigate(['/learn/lesson']);
+            } else if(this.stageService.stage == 3) {
+              this.router.navigate(['/learn/lesson',1]);
+            } else if(this.stageService.stage == 4) {
+              this.router.navigate(['/learn/lesson',2]);
+            } else if(this.stageService.stage == 5) {
+              this.router.navigate(['/learn/lesson',3]);
             }
           });
   }

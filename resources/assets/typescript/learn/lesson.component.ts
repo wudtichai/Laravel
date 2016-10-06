@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute,Params }      from '@angular/router';
+import { ActivatedRoute,Params } from '@angular/router';
 import { User } from './../user';
 import { AuthService } from './../auth.service';
 import { StageService } from './stage.service';
@@ -13,26 +13,32 @@ import { StageService } from './stage.service';
 export class LessonComponent { 
 
   private user:User;
-  private stage:number;
+  private id:number ;
+  private next:string ;
+  private previous:string ;
   private trustedUrlPDF;
+  private trustedVideoUrl;
   private interact:boolean
 
   constructor(public route: ActivatedRoute, 
       private authService: AuthService, 
       private stageService: StageService, 
       private sanitizer: DomSanitizer) { 
+
+    this.route.params.forEach((params: Params) => {
+      this.id = +params['id'];
+      this.stageService.updateStage(this.id+2);
+      this.next = "/learn/lesson/" + (this.id + 1);
+      this.previous = "/learn/lesson/" + (this.id - 1);
+      this.getUrl();
+    });
+
     authService.userUpdated$.subscribe(
       (user) => {
         this.fetchUser(user);
-        this.getPDFUrl();
+        this.getUrl();
       }
     );
-
-    stageService.getStage()
-    .subscribe(
-      () => {
-        this.fetchStage();
-      });
   }
 
   fetchUser(user:User) {
@@ -40,26 +46,22 @@ export class LessonComponent {
     this.interact = this.user.id % 2 == 0 ? false:true;
   }
 
-  fetchStage() {
-    this.stage = this.stageService.stage;
-    this.getPDFUrl();
-  }
-
-  getPDFUrl() {
+  getUrl() {
     let interact_text;
     if(this.interact) {
       interact_text = "interact";
     } else {
       interact_text = "noninteract";
     }
-    let lesson = this.stage - 2;
-    let pdf = "pdf/ebook-" + interact_text + "-" + lesson + ".pdf";
+    let pdf = "pdf/ebook-" + interact_text + "-" + this.id + ".pdf";
+    let videoUrl = "video/TimeValue" + this.id + ".mp4";
     this.trustedUrlPDF = this.sanitizer.bypassSecurityTrustResourceUrl(pdf);
+    this.trustedVideoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(videoUrl);
   }
 
   ngOnInit() {
     this.fetchUser(this.authService.user);
-    this.fetchStage();
+    this.getUrl();
   }
 
 }
