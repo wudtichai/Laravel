@@ -11,3 +11,4 @@ Homestead.yaml
 /zone
 /storage
 /bootstrap/cache
+/public/video

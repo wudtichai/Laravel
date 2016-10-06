@@ -18,7 +18,7 @@ const learnRoutes: Routes = [
       { path: 'confirm', component: ConfirmComponent },
       { path: 'knowledge', component: KnowledgeComponent },
       { path: 'nature', component: NatureComponent },
-      { path: 'lesson/:id', component: LessonComponent }
+      { path: 'lesson', component: LessonComponent }
     ]
   }
 ];
