@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { headersPost } from '../ajax-header';
 import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { KnowledgeModel }    from './knowledge-model';
 
 @Injectable()

@@ -4,11 +4,13 @@ import { FormsModule }   from '@angular/forms';
 import { learnRouting }   from './learn.routing';
 import { StageService } from './stage.service';
 import { KnowledgeService }    from './knowledge.service';
+import { NatureService }    from './nature.service';
 import { LearnComponent } from './learn.component';
 import { MainComponent } from './main.component';
 import { ConfirmComponent } from './confirm.component';
 import { KnowledgeComponent } from './knowledge.component';
 import { NatureComponent } from './nature.component';
+import { LessonComponent } from './lesson.component';
 
 @NgModule({
   imports: [
@@ -21,11 +23,13 @@ import { NatureComponent } from './nature.component';
     MainComponent,
     ConfirmComponent,
     KnowledgeComponent,
-    NatureComponent
+    NatureComponent,
+    LessonComponent
   ],
   providers: [
     StageService,
-    KnowledgeService
+    KnowledgeService,
+    NatureService
   ]
 })
 

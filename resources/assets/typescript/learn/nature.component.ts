@@ -1,28 +1,41 @@
 import { Component } from '@angular/core';
+import { QUESTION_LIST } from './question-list';
+import { NatureService }    from './nature.service';
+import { Router }      from '@angular/router';
 
 @Component({
-  templateUrl: 'app/learn/nature.component.html'
+  templateUrl: 'app/learn/nature.component.html',
+  styleUrls: ['app/learn/nature.component.css'],
+  providers: [NatureService]
 })
 
 export class NatureComponent { 
 
-  questionList = [
-    {
-      q:"คุณกำลังวางแผนที่จะไปพักผ่อนกับกลุ่มเพื่อนๆ คุณต้องการฟังข้อคิดเห็นจากพวกเขาเกี่ยวกับแผนงานนั้น คุณจะ", 
-      a:[
-        "อธิบายประเด็นที่สำคัญๆ",
-        "ใช้แผนที่และเว็บไซด์เพื่อแสดงสถานที่ประกอบ",
-        "ถ่ายเอกสารแผนงานของคุณให้เพื่อน",
-        "โทรศัพท์ ส่งข้อความเต็มหรือ ส่ง e-mail ให้เพื่อน"]
-    },
-    {
-      q:"กลุ่มนักท่องเที่ยวต้องการรู้เกี่ยวกับสวนสาธารณะ หรือเขตสงวนพันธ์สัตว์ป่าในบริเวณใกล้ๆ ที่คุณพักอยู่ คุณจะ", 
-      a:[
-        "พานักท่องเที่ยวไปที่สวนสาธารณะหรือเขตสงวนพันธ์สัตว์ป่าและเดินเที่ยวไปด้วยก ัน",
-        "ให้หนังสือหรือคู่มือการท่องเที่ยวเกี่ยวกับสวนสาธารณะหรือเขตสงวนพันธ์สัตว์ป่าแก่นักท่องเที่ยว",
-        "พูดคุยในรายละเอียดหรือเตรียมเรื่องที่จะพูดคุยเกี่ยวกับสวนสาธารณะหรือเขตสงวน พันธ์สัตว์ป่าแก่นักท่องเที่ยว",
-        "แสดงภาพในอินเตอร์เน็ทแสดงรูปภาพหรือภาพในหนังสือแก่นักท่องเที่ยว"]
-    }
-  ];
+  questionList = QUESTION_LIST;
 
+  private answer;
+
+  constructor(private natureService: NatureService, public router: Router) { }
+
+  ngOnInit() {
+    this.resetAnswer();
+  }
+
+  resetAnswer() {
+    this.answer = {};
+    for (let i = 1;i <= this.questionList.length; i++) {
+      for (let j = 1; j <= 4; j++) {
+        this.answer['q'+i+'_'+j] = {selected:false}; 
+      }
+    }
+  }
+
+  onSubmit() {
+    this.natureService.send(this.answer).subscribe(
+      () => {
+        this.resetAnswer();
+        this.router.navigate(['/learn']);
+      }
+    );
+  }
 }

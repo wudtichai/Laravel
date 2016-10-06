@@ -23,4 +23,8 @@ class User extends Authenticatable
         return $this->hasOne('App\Knowledge');
     }
 
+    public function nature()
+    {
+        return $this->hasOne('App\Nature');
+    }
 }
