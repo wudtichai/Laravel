@@ -1,45 +1,34 @@
 import { Component } from '@angular/core';
 import { AuthService } from './auth.service'
 import { User } from './user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css'],
-  providers: [AuthService]
+  styleUrls: ['app/app.component.css']
 })
 export class AppComponent { 
-  loginStatus = false;
+
+  isLoggedIn: boolean = false;
   user :User;
-  constructor(private authService: AuthService) {
-    this.check();
-  }
- 
-  check() {
-    this.authService.check().subscribe(
-      (res) => this.setUser(res.data.user),
-      (err) => this.clearUser()
-    );
+
+  constructor(private authService: AuthService, private router: Router) {
+    authService.userUpdated$.subscribe(
+      (user) => {
+        this.isLoggedIn = true;
+        this.user = user;
+      }
+    ); 
   }
 
   logout() {
-    this.authService.logout().subscribe(
-      (res) => this.clearUser()
-    );
+    this.authService.logout().subscribe(() => {
+      if (!this.authService.isLoggedIn) {
+        delete this.user;
+        this.isLoggedIn = false;
+        this.router.navigate(['/login']);
+      }
+    });
   }
-
-  setUser(user){
-    this.user = user;
-    this.loginStatus = true;
-  }
-
-  clearUser(){
-    delete this.user;
-    this.loginStatus = false;
-  }
-
-  onLogin(res) {
-    this.setUser(res.data.user);
-  }
-
 }

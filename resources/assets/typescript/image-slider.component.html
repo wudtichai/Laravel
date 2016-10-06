@@ -1,7 +1,7 @@
 <section>
   <div class="slideshow-container">
     <div *ngFor="let image of images" class="mySlides" [hidden]="!image.show">
-      <img [src]="image.src" style="width:100%;max-height: 50%;">
+      <img [src]="image.src" style="width:100%;">
     </div>
     <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
     <a class="next" (click)="plusSlides(1)">&#10095;</a>

@@ -15,7 +15,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'firstname', 'lastname',
+        'fullname_th', 'email',
     ];
+
+    public function knowledge()
+    {
+        return $this->hasOne('App\Knowledge');
+    }
 
 }

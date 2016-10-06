@@ -1,0 +1,27 @@
+<section>
+  <h3>ท่านคิดว่าท่านมีความรู้เกี่ยวกับสิ่งที่อยู่ในโลกดิจิทัลต่อไปนี้มากน้อยเพียงใด <h3 class="up">*</h3></h3>
+  <form class="form-inline" (ngSubmit)="onSubmit()" #knowledgeForm="ngForm" id="knowledge-form">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="first"></th>
+        <th>ไม่รู้จัก</th>
+        <th>รู้จักแต่ไม่เคยใช้</th> 
+        <th>รู้จักแต่ใช้น้อยมาก</th>
+        <th>รู้จักและใช้บางครั้ง</th>
+        <th>รู้จักและใช้บ่อย</th>
+        <th>รู้จักและใช้บ่อยมาก</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let knowledge of knowledgeList">
+        <td class="first">{{knowledge.title}}</td>
+        <td *ngFor="let n of [1,2,3,4,5,6]">
+          <input type="radio" name={{knowledge.name}} value="{{n}}" required>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="submit" class="btn btn-primary" [disabled]="!knowledgeForm.form.valid">ส่งแบบสอบถาม</button>
+  </form>
+</section>

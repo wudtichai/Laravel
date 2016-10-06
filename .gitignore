@@ -9,3 +9,5 @@ Homestead.yaml
 /public/node_modules
 /public/app
 /zone
+/storage
+/bootstrap/cache

@@ -15,8 +15,16 @@ Route::get('/', function () {
     return view('angular2');
 });
 
-Route::group(['prefix' => 'auth'], function () {
-	Route::post('login', 'Auth\AuthController@login');
-	Route::get('logout', 'Auth\AuthController@logout');
-	Route::get('status', 'Auth\AuthController@status');
+Route::group(['prefix' => 'api'], function () {
+    Route::group(['prefix' => 'auth'], function () {
+        Route::post('login', 'Auth\AuthController@login');
+        Route::get('logout', 'Auth\AuthController@logout');
+        Route::get('status', 'Auth\AuthController@status');
+    });
+
+    Route::group(['prefix' => 'learn', 'middleware' => ['auth.check']], function () {
+        Route::get('stage', 'Learn\StageController@stage');
+        Route::post('confirm', 'Learn\ConfirmController@confirm');
+        Route::post('knowledge', 'Learn\KnowledgeController@post');
+    });
 });
