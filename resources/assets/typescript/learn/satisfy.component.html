@@ -1,0 +1,29 @@
+<section>
+  <h3>วัดความพึงพอใจ</h3>
+  <p>กรุณาระบุความพึงพอใจในการใช้หนังสืออิเล็กทรอนิกส์เรื่องมูลค่าปัจจุบันและมูลค่าอนาคตของเงินตามเวลา โดย 1 หมายความว่า ไม่เห็นด้วยที่สุด และ 7 หมายความว่า เห็นด้วยที่สุด</p>
+  <form class="form-inline" (ngSubmit)="onSubmit()" #satisfyForm="ngForm" id="satisfy-form">
+  <table class="table table-striped" *ngFor="let satisfy of satisfyList; let i = index;">
+    <thead>
+      <tr>
+        <th class="first">{{satisfy.main}}</th>
+        <th>1</th>
+        <th>2</th> 
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sub of satisfy.sub; let j = index;">
+        <td class="first">{{sub}}</td>
+        <td *ngFor="let n of [1,2,3,4,5,6,7]">
+          <input type="radio" name="s{{i+1}}_{{j+1}}" value="{{n}}" required>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-primary" [disabled]="!satisfyForm.form.valid" (click)="onSubmit()">ส่งแบบสอบถาม</button>
+  </form>
+</section>

@@ -1,0 +1,22 @@
+th, td{
+  width: 7%;
+  text-align: center;
+}
+.first {
+  width: 51%;
+  text-align: left;
+}
+thead tr th {
+  vertical-align: middle;
+}
+section {
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 20px;
+}
+h3 {
+  font-size: 1.2em;
+}
+form {
+  text-align: center;
+}
