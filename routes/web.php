@@ -24,8 +24,10 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::group(['prefix' => 'learn', 'middleware' => ['auth.check']], function () {
         Route::get('stage', 'Learn\StageController@stage');
+        Route::put('stage', 'Learn\StageController@update');
         Route::post('confirm', 'Learn\ConfirmController@confirm');
         Route::post('knowledge', 'Learn\KnowledgeController@post');
         Route::post('nature', 'Learn\NatureController@post');
+        Route::post('test', 'Learn\TestController@post');
     });
 });

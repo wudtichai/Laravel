@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { headers } from '../ajax-header';
+import { headers,headersPost } from '../ajax-header';
 import { Http } from '@angular/http';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
@@ -20,12 +20,22 @@ export class StageService {
       .map(
         (res) => {
           this.stage = res.json().data.stage;
-          this.stageSource.next(this.stage);
+          this.updateStage(this.stage);
         });
   }
 
   updateStage(stage) {
     this.stageSource.next(stage);
+  }
+
+  setStage(stage) {
+    return this.http
+      .put(this.getStageUrl, JSON.stringify({stage}), {headers:headersPost})
+      .map(
+        (res) => {
+          this.stage = res.json().data.stage;
+          this.updateStage(this.stage);
+        });
   }
 
 }

@@ -28,7 +28,11 @@ export class LessonComponent {
     this.route.params.forEach((params: Params) => {
       this.id = +params['id'];
       this.stageService.updateStage(this.id+2);
-      this.next = "/learn/lesson/" + (this.id + 1);
+      if(this.id == 3) {
+        this.next = "/learn/test";
+      } else {
+        this.next = "/learn/lesson/" + (this.id + 1);
+      }
       this.previous = "/learn/lesson/" + (this.id - 1);
       this.getUrl();
     });

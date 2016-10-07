@@ -7,6 +7,8 @@ import { ConfirmComponent } from './confirm.component';
 import { KnowledgeComponent } from './knowledge.component';
 import { NatureComponent } from './nature.component';
 import { LessonComponent } from './lesson.component';
+import { TestComponent } from './test.component';
+import { SatisfyComponent } from './satisfy.component';
 
 const learnRoutes: Routes = [
   {
@@ -18,7 +20,9 @@ const learnRoutes: Routes = [
       { path: 'confirm', component: ConfirmComponent },
       { path: 'knowledge', component: KnowledgeComponent },
       { path: 'nature', component: NatureComponent },
-      { path: 'lesson/:id', component: LessonComponent }
+      { path: 'lesson/:id', component: LessonComponent },
+      { path: 'test', component: TestComponent },
+      { path: 'satisfy', component: SatisfyComponent }
     ]
   }
 ];

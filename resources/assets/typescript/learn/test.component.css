@@ -1,0 +1,45 @@
+section {
+    padding: 20px 0px 20px;
+    min-width: 1024px;
+    overflow-x: scroll;
+}
+
+.calculator {
+    width: 40%;
+    float: left;
+}
+
+.test {
+    width: 60%;
+    float: right;
+    max-height: 500px;
+    overflow-y: scroll;
+    padding-left: 20px;
+}
+
+button {
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+}
+
+.question {
+	font-weight: normal;
+}
+
+.tab {
+	margin-left: 5px;
+}
+
+.group:before, .group:after { 
+	content: "";
+	display: table; 
+}
+
+.group:after {
+	clear: both; 
+}
+
+.group {
+	zoom: 1; /* IE6&7 */ 
+}

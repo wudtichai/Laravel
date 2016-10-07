@@ -25,6 +25,10 @@ export class MainComponent {
               this.router.navigate(['/learn/lesson',2]);
             } else if(this.stageService.stage == 5) {
               this.router.navigate(['/learn/lesson',3]);
+            } else if(this.stageService.stage == 6) {
+              this.router.navigate(['/learn/test']);
+            } else if(this.stageService.stage == 7) {
+              this.router.navigate(['/learn/satisfy']);
             }
           });
   }

@@ -27,4 +27,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Nature');
     }
+
+    public function test()
+    {
+        return $this->hasOne('App\Test');
+    }
 }

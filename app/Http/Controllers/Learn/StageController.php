@@ -15,4 +15,13 @@ class StageController extends Controller
         return response()->json(['data'=> $data]);
     }
 
+    public function update(Request $request)
+    {
+    	$stage = $request->input('stage');
+    	$user = Auth::user();
+        $user->stage = $stage;
+        $user->save();
+        return response()->json(['data'=>['stage'=> $stage]]);
+    }
+
 }
