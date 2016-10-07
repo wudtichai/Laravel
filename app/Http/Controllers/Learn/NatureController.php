@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Learn;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use App\User;
 
 class NatureController extends Controller
 {
@@ -23,6 +24,8 @@ class NatureController extends Controller
             }
             $nature = $user->nature()->create($data);
             $user->stage = 3;
+            $max = User::all()->max('random') || 0;
+            $user->random = $max + 1;
             $user->save();
             return response()->json(['nature'=> $nature], 201);
         } else {

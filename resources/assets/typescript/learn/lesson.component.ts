@@ -47,7 +47,7 @@ export class LessonComponent {
 
   fetchUser(user:User) {
     this.user = user;
-    this.interact = this.user.id % 2 == 0 ? false:true;
+    this.interact = this.user.random % 2 == 0 ? false:true;
   }
 
   getUrl() {
