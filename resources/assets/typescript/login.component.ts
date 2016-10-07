@@ -16,14 +16,17 @@ export class LoginComponent {
   onSubmit() { 
     this.invalid = false;
 
-    this.authService.login(this.loginModel).subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        this.loginModel = new Login();
-        this.router.navigate(['/learn']);
-      } else {
+    this.authService.login(this.loginModel).subscribe(
+      () => {
+        if (this.authService.isLoggedIn) {
+          this.loginModel = new Login();
+          this.router.navigate(['/learn']);
+        }
+      },
+      () => {
         this.invalid = true;
-      }   
-    });
+      }
+    );
   }
 
 }
