@@ -34,7 +34,7 @@ export class NatureComponent {
     this.natureService.send(this.answer).subscribe(
       () => {
         this.resetAnswer();
-        this.router.navigate(['/learn']);
+        this.router.navigate(['/learn/lesson', 1]);
       }
     );
   }
