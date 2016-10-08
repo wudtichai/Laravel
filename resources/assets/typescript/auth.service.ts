@@ -21,6 +21,9 @@ export class AuthService {
   private userSource = new Subject<User>();
   userUpdated$ = this.userSource.asObservable();
 
+  private isLoggedInSource = new Subject<boolean>();
+  isLoggedInUpdated$ = this.isLoggedInSource.asObservable();
+
   constructor(private http: Http) { }
 
   login(login: Login) {
@@ -40,13 +43,18 @@ export class AuthService {
       .get(this.logoutUrl, {headers})
       .map(
         (res) => {
-          delete this.user;
-          this.isLoggedIn = false;
+          this.clearSession();
         });
   }
 
   updateUser(user: User) {
     this.userSource.next(user);
+  }
+
+  clearSession(){
+    delete this.user;
+    this.isLoggedIn = false;
+    this.isLoggedInSource.next(this.isLoggedIn);
   }
 
   setUser = (res:Response) => {
