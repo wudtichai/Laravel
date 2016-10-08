@@ -12,3 +12,4 @@ Homestead.yaml
 /storage
 /bootstrap/cache
 /public/video
+/public/css
