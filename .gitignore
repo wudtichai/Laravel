@@ -13,3 +13,4 @@ Homestead.yaml
 /bootstrap/cache
 /public/video
 /public/css
+/public/pdf
