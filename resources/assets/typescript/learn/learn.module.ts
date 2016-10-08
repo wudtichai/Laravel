@@ -15,6 +15,7 @@ import { NatureComponent } from './nature.component';
 import { LessonComponent } from './lesson.component';
 import { TestComponent } from './test.component';
 import { SatisfyComponent } from './satisfy.component';
+import { EndComponent } from './end.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { SatisfyComponent } from './satisfy.component';
     NatureComponent,
     LessonComponent,
     TestComponent,
-    SatisfyComponent
+    SatisfyComponent,
+    EndComponent
   ],
   providers: [
     StageService,

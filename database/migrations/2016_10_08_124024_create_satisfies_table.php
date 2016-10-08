@@ -29,6 +29,7 @@ class CreateSatisfiesTable extends Migration
             $table->unsignedTinyInteger('s3_2');
             $table->unsignedTinyInteger('s3_3');
             $table->unsignedTinyInteger('s3_4');
+            $table->unsignedTinyInteger('s3_5');
             // 4
             $table->unsignedTinyInteger('s4_1');
             $table->unsignedTinyInteger('s4_2');

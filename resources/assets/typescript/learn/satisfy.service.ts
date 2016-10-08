@@ -4,13 +4,13 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class SatisfyService {
-  private satifyUrl = 'api/learn/satify';
+  private satisfyUrl = 'api/learn/satisfy';
 
   constructor(private http: Http) { }
 
-  send(satify) {
+  send(satisfy) {
     return this.http
-      .post(this.satifyUrl, JSON.stringify(satify), {headers:headersPost})
+      .post(this.satisfyUrl, JSON.stringify(satisfy), {headers:headersPost})
   }
 
 }
