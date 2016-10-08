@@ -29,6 +29,8 @@ export class MainComponent {
               this.router.navigate(['/learn/test']);
             } else if(this.stageService.stage == 7) {
               this.router.navigate(['/learn/satisfy']);
+            } else {
+              this.router.navigate(['/learn/end']);
             }
           });
   }

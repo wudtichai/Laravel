@@ -2,13 +2,17 @@
   <form (ngSubmit)="onSubmit()" #testForm="ngForm" id="test-form">
   <div class="group">
   <article class="test">
+    <h3>แบบทดสอบหลังเรียน</h3>
+    <p>กรุณาเลือกคำตอบที่ถูกต้องที่สุด</p>
     <div class="form-group" *ngFor="let test of testList; let i = index;">
       <label>QUESTION {{i+1}}</label>
       <label class="question tab">{{test.q}}</label>
       <div class="radio tab" *ngFor="let answer_text of test.a;let j = index;">
-        <label>
+        <label >
           <input type="radio" name="t{{i+1}}" value="{{j+1}}" required>
-          {{answer_text}}
+          <div *ngIf="answer_text == 'choice1'"><span>Pv (1+r)</span><span class="up">t</span></div>
+          <div *ngIf="answer_text == 'choice2'" style="text-align: center;"><span style="display: block;border-bottom: 0.1em solid black;">FV</span><span style="padding-left: 5px;margin-top: 2px;display: block;">(1+r)<span class="up">t</span></span></div>
+          <div *ngIf="answer_text != 'choice1' && answer_text != 'choice2'">{{answer_text}}</div>
         </label>
       </div>
     </div>

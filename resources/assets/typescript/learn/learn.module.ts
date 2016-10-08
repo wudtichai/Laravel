@@ -6,6 +6,7 @@ import { StageService } from './stage.service';
 import { KnowledgeService }    from './knowledge.service';
 import { NatureService }    from './nature.service';
 import { TestService } from './test.service';
+import { SatisfyService } from './satisfy.service';
 import { LearnComponent } from './learn.component';
 import { MainComponent } from './main.component';
 import { ConfirmComponent } from './confirm.component';
@@ -14,6 +15,7 @@ import { NatureComponent } from './nature.component';
 import { LessonComponent } from './lesson.component';
 import { TestComponent } from './test.component';
 import { SatisfyComponent } from './satisfy.component';
+import { EndComponent } from './end.component';
 
 @NgModule({
   imports: [
@@ -29,13 +31,15 @@ import { SatisfyComponent } from './satisfy.component';
     NatureComponent,
     LessonComponent,
     TestComponent,
-    SatisfyComponent
+    SatisfyComponent,
+    EndComponent
   ],
   providers: [
     StageService,
     KnowledgeService,
     NatureService,
-    TestService
+    TestService,
+    SatisfyService
   ]
 })
 

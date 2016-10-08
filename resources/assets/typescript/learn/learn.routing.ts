@@ -9,6 +9,7 @@ import { NatureComponent } from './nature.component';
 import { LessonComponent } from './lesson.component';
 import { TestComponent } from './test.component';
 import { SatisfyComponent } from './satisfy.component';
+import { EndComponent } from './end.component';
 
 const learnRoutes: Routes = [
   {
@@ -22,7 +23,8 @@ const learnRoutes: Routes = [
       { path: 'nature', component: NatureComponent },
       { path: 'lesson/:id', component: LessonComponent },
       { path: 'test', component: TestComponent },
-      { path: 'satisfy', component: SatisfyComponent }
+      { path: 'satisfy', component: SatisfyComponent },
+      { path: 'end', component: EndComponent }
     ]
   }
 ];

@@ -29,5 +29,6 @@ Route::group(['prefix' => 'api'], function () {
         Route::post('knowledge', 'Learn\KnowledgeController@post');
         Route::post('nature', 'Learn\NatureController@post');
         Route::post('test', 'Learn\TestController@post');
+        Route::post('satisfy', 'Learn\SatisfyController@post');
     });
 });

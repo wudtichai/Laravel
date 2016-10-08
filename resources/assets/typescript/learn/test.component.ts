@@ -26,7 +26,6 @@ export class TestComponent {
 
   onSubmit() {
     if($("#test-form").valid()){
-      // console.log(JSON.stringify(this.prepareAnswer()));
       this.testService.send(this.prepareAnswer()).subscribe(
         () => {
           this.resetForm();
