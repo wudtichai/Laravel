@@ -6,6 +6,7 @@ import { StageService } from './stage.service';
 import { KnowledgeService }    from './knowledge.service';
 import { NatureService }    from './nature.service';
 import { TestService } from './test.service';
+import { SatisfyService } from './satisfy.service';
 import { LearnComponent } from './learn.component';
 import { MainComponent } from './main.component';
 import { ConfirmComponent } from './confirm.component';
@@ -35,7 +36,8 @@ import { SatisfyComponent } from './satisfy.component';
     StageService,
     KnowledgeService,
     NatureService,
-    TestService
+    TestService,
+    SatisfyService
   ]
 })
 

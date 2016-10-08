@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SATISFY_LIST }    from './satisfy-list';
 import { Router }      from '@angular/router';
+import { SatisfyService }      from './satisfy.service';
 
 declare var $:any;
 declare var jQuery:any;
@@ -14,8 +15,7 @@ export class SatisfyComponent {
 
   satisfyList = SATISFY_LIST;
 
-  // constructor(private satisfyService: SatisfyService, public router: Router) {
-  constructor(public router: Router) {
+  constructor(private satisfyService: SatisfyService, public router: Router) {
     jQuery.validator.setDefaults({
       errorPlacement: function(error, element) {
       }
@@ -24,13 +24,12 @@ export class SatisfyComponent {
 
   onSubmit() {
     if($("#satisfy-form").valid()){
-      console.log(JSON.stringify(this.prepareSatisfy()));
-      // this.satisfyService.send(this.prepareSatisfy()).subscribe(
-      //   () => {
-      //     this.resetForm();
-      //     this.router.navigate(['/learn']);
-      //   }
-      // );
+      this.satisfyService.send(this.prepareSatisfy()).subscribe(
+        () => {
+          this.resetForm();
+          this.router.navigate(['/learn']);
+        }
+      );
     } else {
       alert('กรุณาตอบทุกข้อ');
     }
