@@ -48,6 +48,8 @@ export class AuthService {
   }
 
   updateUser(user: User) {
+    this.user = user;
+    this.isLoggedIn = true;
     this.userSource.next(user);
   }
 
@@ -59,9 +61,7 @@ export class AuthService {
 
   setUser = (res:Response) => {
     let user = res.json().data.user || { };
-    this.user = user;
     this.updateUser(user);
-    this.isLoggedIn = true;
   }
 
 }

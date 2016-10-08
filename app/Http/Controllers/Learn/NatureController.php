@@ -28,7 +28,7 @@ class NatureController extends Controller
             $max = empty($max) ? 0:$max;
             $user->random = $max + 1;
             $user->save();
-            return response()->json(['nature'=> $nature], 201);
+            return response()->json(['data' => ['nature'=> $nature, 'user' => $user]], 201);
         } else {
             return response()->json(['message'=> 'Forbidden'], 403);
         }

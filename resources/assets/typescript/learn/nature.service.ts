@@ -11,6 +11,7 @@ export class NatureService {
   send(nature) {
     return this.http
       .post(this.natureUrl, JSON.stringify(nature), {headers:headersPost})
+      .map(res => res.json());
   }
 
 }
