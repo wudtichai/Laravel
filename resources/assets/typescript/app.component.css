@@ -3,6 +3,7 @@ header {
     color: white;
     padding: 20px 10% 10px;
     overflow: hidden;
+    font-family: 'Kanit', sans-serif;
 }
 
 h1 {
@@ -14,3 +15,4 @@ h1 {
 form {
     float: right;
 } 
+
