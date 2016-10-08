@@ -24,7 +24,8 @@ class NatureController extends Controller
             }
             $nature = $user->nature()->create($data);
             $user->stage = 3;
-            $max = User::all()->max('random') || 0;
+            $max = User::all()->max('random');
+            $max = empty($max) ? 0:$max;
             $user->random = $max + 1;
             $user->save();
             return response()->json(['nature'=> $nature], 201);
