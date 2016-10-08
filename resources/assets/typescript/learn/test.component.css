@@ -25,6 +25,7 @@ button {
 
 .question {
 	font-weight: normal;
+    display: block;
 }
 
 .tab {
@@ -42,4 +43,10 @@ button {
 
 .group {
 	zoom: 1; /* IE6&7 */ 
+}
+
+.up {
+    position: relative;
+    top: -6px;
+    left: 1px;
 }
