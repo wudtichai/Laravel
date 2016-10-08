@@ -20,15 +20,25 @@ export class AppComponent {
         this.user = user;
       }
     ); 
+    authService.isLoggedInUpdated$.subscribe(
+      (isLoggedIn) => {
+        if(!isLoggedIn) {
+          this.clearSession();
+        }
+      }
+    ); 
   }
 
   logout() {
     this.authService.logout().subscribe(() => {
       if (!this.authService.isLoggedIn) {
-        delete this.user;
-        this.isLoggedIn = false;
-        this.router.navigate(['/login']);
+        this.clearSession();
       }
     });
+  }
+  clearSession() {
+    delete this.user;
+    this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 }
