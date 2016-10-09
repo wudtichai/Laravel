@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ActivatedRoute,Params } from '@angular/router';
+import { ActivatedRoute,Params,Router } from '@angular/router';
 import { User } from './../user';
 import { AuthService } from './../auth.service';
 import { StageService } from './stage.service';
@@ -23,7 +23,8 @@ export class LessonComponent {
   constructor(public route: ActivatedRoute, 
       private authService: AuthService, 
       private stageService: StageService, 
-      private sanitizer: DomSanitizer) { 
+      private sanitizer: DomSanitizer,
+      public router: Router) { 
 
     this.route.params.forEach((params: Params) => {
       this.id = +params['id'];
@@ -66,6 +67,12 @@ export class LessonComponent {
   ngOnInit() {
     this.fetchUser(this.authService.user);
     this.getUrl();
+  }
+
+  goTest() {
+    if(confirm("ยืนยันเพื่อทำแบบทดสอบหลังเรียน\n** หากยืนยัน จะไม่สามารถกลับมาเรียนได้อีก **")){
+      this.router.navigate(['/learn/test']);
+    }
   }
 
 }
