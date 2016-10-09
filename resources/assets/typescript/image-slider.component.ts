@@ -11,9 +11,8 @@ export class ImageSliderComponent {
   current: number;
   count: number;
   images: Image[] = [
-    {"src": "images/img1.jpg", show:true},
-    {"src": "images/img2.jpg", show:false},
-    {"src": "images/img3.jpg", show:false}
+    {"src": "images/banner1.png", show:true},
+    {"src": "images/banner2.png", show:false}
   ];
 
   constructor() {
